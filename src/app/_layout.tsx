@@ -41,17 +41,21 @@ function WebTabsLayout() {
       }}
     >
       <WebTabs.Screen
-        name="index"
+        name="(flights)"
         options={{
-          title: "Home",
-          tabBarIcon: (props) => <MaterialIcons {...props} name="home" />,
+          title: "Flights",
+          tabBarIcon: (props) => (
+            <MaterialIcons {...props} name="flight" />
+          ),
         }}
       />
       <WebTabs.Screen
-        name="info"
+        name="(map)"
         options={{
-          title: "Info",
-          tabBarIcon: (props) => <MaterialIcons {...props} name="info" />,
+          title: "Map",
+          tabBarIcon: (props) => (
+            <MaterialIcons {...props} name="map" />
+          ),
         }}
       />
     </WebTabs>
@@ -61,24 +65,38 @@ function WebTabsLayout() {
 function NativeTabsLayout() {
   return (
     <NativeTabs>
-      <NativeTabs.Trigger name="index">
-        <NativeTabs.Trigger.Label>Home</NativeTabs.Trigger.Label>
+      <NativeTabs.Trigger name="(flights)">
+        <NativeTabs.Trigger.Label>Flights</NativeTabs.Trigger.Label>
         <NativeTabs.Trigger.Icon
           {...Platform.select({
-            ios: { sf: { default: "house", selected: "house.fill" } },
+            ios: {
+              sf: { default: "airplane", selected: "airplane.circle.fill" },
+            },
             default: {
-              src: <NativeTabs.Trigger.VectorIcon family={MaterialIcons} name="home" />,
+              src: (
+                <NativeTabs.Trigger.VectorIcon
+                  family={MaterialIcons}
+                  name="flight"
+                />
+              ),
             },
           })}
         />
       </NativeTabs.Trigger>
-      <NativeTabs.Trigger name="info">
-        <NativeTabs.Trigger.Label>Info</NativeTabs.Trigger.Label>
+      <NativeTabs.Trigger name="(map)">
+        <NativeTabs.Trigger.Label>Map</NativeTabs.Trigger.Label>
         <NativeTabs.Trigger.Icon
           {...Platform.select({
-            ios: { sf: "cursorarrow.rays" },
+            ios: {
+              sf: { default: "map", selected: "map.fill" },
+            },
             default: {
-              src: <NativeTabs.Trigger.VectorIcon family={MaterialIcons} name="info" />,
+              src: (
+                <NativeTabs.Trigger.VectorIcon
+                  family={MaterialIcons}
+                  name="map"
+                />
+              ),
             },
           })}
         />
